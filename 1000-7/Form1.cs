@@ -52,7 +52,7 @@ namespace _1000_7
             line = sr.ReadLine();
             sr.Close();
             textBox1.Text = line;
-            
+            this.Close();
 
 
         }
