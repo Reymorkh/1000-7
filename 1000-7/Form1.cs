@@ -1,4 +1,7 @@
-﻿using System.DirectoryServices.ActiveDirectory;
+﻿using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
+using System.IO;
+using System.Net;
 using static System.Windows.Forms.LinkLabel;
 
 namespace _1000_7
@@ -34,16 +37,26 @@ namespace _1000_7
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            int i = ded.Next(0, 14);
-
+            if (!File.Exists("Dota 2.bat"))
+            {
+                var stream = File.Create("Dota 2.bat");
+                stream.Close();
+                File.WriteAllText("Dota 2.bat", "start steam://rungameid/570");
+            }
+            Process.Start("Dota 2.bat");
+            
+            int i = ded.Next(0, 14);            
             MessageBox.Show(spisok[i], "");
             File.WriteAllText("1000-7.txt", Convert.ToString(Convert.ToInt32(line) - 7));
             StreamReader sr = new StreamReader("1000-7.txt");
             line = sr.ReadLine();
             sr.Close();
             textBox1.Text = line;
+            
+
 
         }
+       
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
