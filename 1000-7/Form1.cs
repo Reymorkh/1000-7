@@ -37,13 +37,7 @@ namespace _1000_7
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (!File.Exists("Dota 2.bat"))
-            {
-                var stream = File.Create("Dota 2.bat");
-                stream.Close();
-                File.WriteAllText("Dota 2.bat", "start steam://rungameid/570");
-            }
-            Process.Start("Dota 2.bat");
+            
             
             int i = ded.Next(0, 14);            
             MessageBox.Show(spisok[i], "");
@@ -52,6 +46,13 @@ namespace _1000_7
             line = sr.ReadLine();
             sr.Close();
             textBox1.Text = line;
+            if (!File.Exists("Dota 2.bat"))
+            {
+                var stream = File.Create("Dota 2.bat");
+                stream.Close();
+                File.WriteAllText("Dota 2.bat", "start steam://rungameid/570");
+            }
+            Process.Start("Dota 2.bat");
             this.Close();
 
 
